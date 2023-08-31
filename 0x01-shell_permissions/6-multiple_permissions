@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod 114
+sudo chmod 114
