@@ -1,4 +1,4 @@
-#!/usr/bin/env bas
+#!/usr/bin/env bash
 # installing nginx on the web01 server
 
 apt-get update -y
