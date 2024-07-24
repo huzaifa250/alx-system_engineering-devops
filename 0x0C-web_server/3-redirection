@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Bash script to configure a Ubuntu machine with Nginx
+# and set up a redirection for /redirect_me
+
+# Update package list and install Nginx if not installed
+sudo apt-get update -y
+sudo apt-get install nginx -y
+
+# Ensure firewall is enabled and allow HTTP traffic
+sudo ufw enable
+sudo ufw allow 'Nginx HTTP'
+
+# Create a simple HTML page
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Add redirection to the default Nginx configuration
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/@huzaifaelnaeem2636/ permanent;' /etc/nginx/sites-available/default
+
+# Reload Nginx to apply changes
+sudo nginx -s reload
+
